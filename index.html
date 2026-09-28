@@ -3,288 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guía de Instrumentos Participativos · Sistematización</title>
+  <title>Guía de Instrumentos Participativos · Sistematización IAP</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
-    /* ---------- RESET Y BASE ---------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-    }
-
-    body {
-      background: #f4f7fc;
-      color: #1e2b3c;
-      padding: 1.5rem 1rem 3rem;
-      line-height: 1.5;
-    }
-
-    .app {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    h1 {
-      font-size: 1.9rem;
-      font-weight: 600;
-      color: #0a2942;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.4rem;
-      border-left: 6px solid #2a7faa;
-      padding-left: 1rem;
-    }
-
-    .subhead {
-      color: #3e5e7a;
-      margin-bottom: 2rem;
-      font-weight: 400;
-      font-size: 1.1rem;
-      padding-left: 1.5rem;
-    }
-
-    /* ---------- TOGGLE BUTTONS (navegación) ---------- */
-    .toggle-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 2rem;
-      background: white;
-      padding: 0.8rem 1rem;
-      border-radius: 3rem;
-      box-shadow: 0 4px 12px rgba(0, 20, 30, 0.08);
-      border: 1px solid #d9e4ed;
-    }
-
-    .toggle-btn {
-      background: transparent;
-      border: none;
-      padding: 0.65rem 1.3rem;
-      border-radius: 2.5rem;
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: #2e4b66;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      white-space: nowrap;
-      border: 1px solid transparent;
-    }
-
-    .toggle-btn:hover {
-      background: #e3eef9;
-      color: #0a2942;
-    }
-
-    .toggle-btn.active {
-      background: #1d5e8f;
-      color: white;
-      border-color: #1d5e8f;
-      box-shadow: 0 4px 10px rgba(29, 94, 143, 0.25);
-    }
-
-    /* ---------- PANELES ---------- */
-    .panel {
-      display: none;
-      animation: fade 0.2s ease;
-    }
-
-    .panel.active {
-      display: block;
-    }
-
-    @keyframes fade {
-      from { opacity: 0.5; transform: translateY(5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ---------- TARJETAS Y TABLAS ---------- */
-    .card {
-      background: white;
-      border-radius: 1.5rem;
-      padding: 1.8rem 1.8rem;
-      box-shadow: 0 8px 22px rgba(0, 20, 30, 0.06);
-      border: 1px solid #d9e4ed;
-      margin-bottom: 1.8rem;
-    }
-
-    .card h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #14324b;
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .card h2 span {
-      background: #d9e9f7;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      color: #1d5e8f;
-    }
-
-    .card h3 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #1d5e8f;
-      margin-top: 1.4rem;
-      margin-bottom: 0.8rem;
-      border-bottom: 2px solid #e3eef9;
-      padding-bottom: 0.3rem;
-    }
-
-    /* ---------- IMÁGENES DE INSTRUMENTOS ---------- */
-    .instrument-img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      border-radius: 1rem;
-      border: 1px solid #c2d6e8;
-      box-shadow: 0 6px 18px rgba(0, 20, 30, 0.08);
-      margin: 1.2rem 0 1.6rem;
-    }
-
-    .instrument-img-caption {
-      font-size: 0.85rem;
-      color: #5a7a96;
-      font-style: italic;
-      text-align: center;
-      margin-top: -1rem;
-      margin-bottom: 1.4rem;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.92rem;
-      margin: 0.8rem 0 1rem;
-      background: white;
-      border-radius: 0.8rem;
-      overflow: hidden;
-    }
-
-    th {
-      background: #e3eef9;
-      color: #14324b;
-      font-weight: 600;
-      text-align: left;
-      padding: 0.7rem 0.8rem;
-      border-bottom: 2px solid #c2d6e8;
-    }
-
-    td {
-      padding: 0.6rem 0.8rem;
-      border-bottom: 1px solid #e6edf5;
-      vertical-align: top;
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 0.2rem 0.7rem;
-      border-radius: 1.5rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      background: #d9e9f7;
-      color: #1d5e8f;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+    body { background: #f4f7fc; color: #1e2b3c; padding: 1.5rem 1rem 3rem; line-height: 1.5; }
+    .app { max-width: 1200px; margin: 0 auto; }
+    h1 { font-size: 1.9rem; font-weight: 600; color: #0a2942; margin-bottom: 0.4rem; border-left: 6px solid #2a7faa; padding-left: 1rem; }
+    .subhead { color: #3e5e7a; margin-bottom: 2rem; font-size: 1.1rem; padding-left: 1.5rem; }
+    .toggle-nav { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; background: white; padding: 0.8rem 1rem; border-radius: 3rem; box-shadow: 0 4px 12px rgba(0,20,30,0.08); border: 1px solid #d9e4ed; }
+    .toggle-btn { background: transparent; border: none; padding: 0.65rem 1.3rem; border-radius: 2.5rem; font-weight: 500; font-size: 0.95rem; color: #2e4b66; cursor: pointer; transition: all 0.15s ease; white-space: nowrap; border: 1px solid transparent; }
+    .toggle-btn:hover { background: #e3eef9; color: #0a2942; }
+    .toggle-btn.active { background: #1d5e8f; color: white; border-color: #1d5e8f; box-shadow: 0 4px 10px rgba(29,94,143,0.25); }
+    .toggle-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .panel { display: none; animation: fade 0.2s ease; }
+    .panel.active { display: block; }
+    @keyframes fade { from { opacity: 0.5; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    .card { background: white; border-radius: 1.5rem; padding: 1.8rem; box-shadow: 0 8px 22px rgba(0,20,30,0.06); border: 1px solid #d9e4ed; margin-bottom: 1.8rem; }
+    .card h2 { font-size: 1.5rem; font-weight: 600; color: #14324b; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.7rem; }
+    .card h2 span { background: #d9e9f7; border-radius: 50%; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #1d5e8f; }
+    .card h3 { font-size: 1.15rem; font-weight: 600; color: #1d5e8f; margin-top: 1.4rem; margin-bottom: 0.8rem; border-bottom: 2px solid #e3eef9; padding-bottom: 0.3rem; }
+    .card h4 { font-size: 1rem; font-weight: 600; color: #1d5e8f; margin-top: 1rem; margin-bottom: 0.5rem; }
+    .instrument-img { display: block; max-width: 100%; height: auto; border-radius: 1rem; border: 1px solid #c2d6e8; box-shadow: 0 6px 18px rgba(0,20,30,0.08); margin: 1.2rem 0 1.6rem; }
+    .instrument-img-caption { font-size: 0.85rem; color: #5a7a96; font-style: italic; text-align: center; margin-top: -1rem; margin-bottom: 1.4rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 0.8rem 0 1rem; background: white; border-radius: 0.8rem; overflow: hidden; }
+    th { background: #e3eef9; color: #14324b; font-weight: 600; text-align: left; padding: 0.7rem 0.8rem; border-bottom: 2px solid #c2d6e8; }
+    td { padding: 0.6rem 0.8rem; border-bottom: 1px solid #e6edf5; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    .badge { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 1.5rem; font-size: 0.75rem; font-weight: 600; background: #d9e9f7; color: #1d5e8f; }
     .badge-green { background: #d4f0e0; color: #0c6b4b; }
     .badge-orange { background: #fef0d9; color: #a86100; }
     .badge-red { background: #fde2e2; color: #b33a3a; }
-
-    ul, ol {
-      padding-left: 1.4rem;
-      margin: 0.5rem 0 1rem;
-    }
-
-    li {
-      margin-bottom: 0.35rem;
-    }
-
-    .highlight {
-      background: #f0f6fe;
-      border-left: 5px solid #1d5e8f;
-      padding: 1rem 1.2rem;
-      border-radius: 0.8rem;
-      margin: 1rem 0;
-      font-size: 0.98rem;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
-    }
-
-    @media (max-width: 700px) {
-      .grid-2 { grid-template-columns: 1fr; }
-      .toggle-nav { border-radius: 1.5rem; }
-      .toggle-btn { white-space: normal; text-align: left; }
-      h1 { font-size: 1.5rem; }
-    }
-
-    .img-note {
-      background: #f9fcff;
-      border: 1px dashed #b6cde0;
-      padding: 0.8rem 1rem;
-      border-radius: 0.8rem;
-      font-size: 0.9rem;
-      color: #2e4b66;
-      margin: 0.8rem 0;
-    }
-
-    .matrix-flow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      margin: 1.2rem 0;
-    }
-
-    .flow-step {
-      background: #e3eef9;
-      padding: 0.6rem 1.2rem;
-      border-radius: 2rem;
-      font-weight: 500;
-      color: #14324b;
-      font-size: 0.9rem;
-    }
-
-    .flow-arrow {
-      font-size: 1.4rem;
-      color: #7a9bb5;
-    }
-
-    .pill {
-      background: #edf4fa;
-      padding: 0.3rem 1rem;
-      border-radius: 2rem;
-      display: inline-block;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: #1d5e8f;
-      margin: 0.15rem 0.15rem;
-    }
+    ul, ol { padding-left: 1.4rem; margin: 0.5rem 0 1rem; }
+    li { margin-bottom: 0.35rem; }
+    .highlight { background: #f0f6fe; border-left: 5px solid #1d5e8f; padding: 1rem 1.2rem; border-radius: 0.8rem; margin: 1rem 0; font-size: 0.98rem; }
+    @media (max-width: 700px) { .toggle-nav { border-radius: 1.5rem; } .toggle-btn { white-space: normal; text-align: left; } h1 { font-size: 1.5rem; } }
+    .img-note { background: #f9fcff; border: 1px dashed #b6cde0; padding: 0.8rem 1rem; border-radius: 0.8rem; font-size: 0.9rem; color: #2e4b66; margin: 0.8rem 0; }
+    .matrix-flow { display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; margin: 1.2rem 0; }
+    .flow-step { background: #e3eef9; padding: 0.6rem 1.2rem; border-radius: 2rem; font-weight: 500; color: #14324b; font-size: 0.9rem; }
+    .flow-arrow { font-size: 1.4rem; color: #7a9bb5; }
   </style>
 </head>
 <body>
 <div class="app">
 
   <h1>📘 Guía de Instrumentos Participativos</h1>
-  <div class="subhead">Aplicación en territorio · Captura fotográfica · Sistematización en matrices</div>
+  <div class="subhead">Aplicación en territorio · Captura fotográfica · Sistematización con IA</div>
 
-  <!-- NAVEGACIÓN TOGGLE -->
   <div class="toggle-nav" id="toggleNav">
     <button class="toggle-btn active" data-panel="panel-intro">🎯 Introducción</button>
     <button class="toggle-btn" data-panel="panel-cartografia">🗺️ Cartografía Social</button>
@@ -299,12 +64,10 @@
     <button class="toggle-btn" data-panel="panel-errores">⚠️ Errores comunes</button>
   </div>
 
-  <!-- ================= PANEL INTRODUCCIÓN ================= -->
   <div id="panel-intro" class="panel active">
     <div class="card">
       <h2><span>🎯</span> ¿Qué es esta guía?</h2>
-      <p>Esta guía articula <strong>cuatro instrumentos participativos</strong> con un flujo de <strong>tres matrices</strong> (DOFA → Priorización → Perfilamiento) y una app que convierte fotografías en datos estructurados.</p>
-
+      <p>Esta guía articula <strong>cuatro instrumentos participativos</strong> con un flujo de <strong>tres matrices</strong> (DOFA → Priorización → Perfilamiento) y una app que convierte fotografías en datos estructurados usando IA.</p>
       <div class="matrix-flow">
         <div class="flow-step">📸 Instrumentos en territorio</div>
         <span class="flow-arrow">→</span>
@@ -314,7 +77,6 @@
         <span class="flow-arrow">→</span>
         <div class="flow-step">📊 Perfilamiento</div>
       </div>
-
       <h3>🔹 Los cuatro instrumentos</h3>
       <table>
         <tr><th>Instrumento</th><th>Tipo de dato que genera</th><th>Dimensión</th></tr>
@@ -323,186 +85,138 @@
         <tr><td>📖 Historias de vida</td><td>Narrativo y temporal</td><td>Cómo ha cambiado</td></tr>
         <tr><td>🧠 Mapa de empatía</td><td>Subjetivo y emocional</td><td>Qué se siente</td></tr>
       </table>
-
-      <div class="highlight">
-        💡 <strong>Regla de oro:</strong> Aplicar al menos <strong>dos instrumentos complementarios</strong> (uno espacial/categórico + uno narrativo/emocional) para que la DOFA quede robusta.
-      </div>
+      <div class="highlight">💡 <strong>Regla de oro:</strong> Aplicar al menos <strong>dos instrumentos complementarios</strong> para que la DOFA quede robusta.</div>
     </div>
   </div>
 
-  <!-- ================= PANEL CARTOGRAFÍA ================= -->
   <div id="panel-cartografia" class="panel">
     <div class="card">
       <h2><span>🗺️</span> Cartografía Social</h2>
-
-      <!-- IMAGEN DEL INSTRUMENTO -->
-      <img src="img/cartografia_social.png" alt="Ejemplo de cartografía social aplicada en territorio" class="instrument-img">
+      <img src="img/cartografia_social.png" alt="Ejemplo de cartografía social" class="instrument-img">
       <div class="instrument-img-caption">Ejemplo real de cartografía social con convenciones y post-its categorizados.</div>
-
       <table>
         <tr><th>Campo</th><th>Descripción</th></tr>
         <tr><td><strong>¿Qué es?</strong></td><td>Representación colectiva del territorio donde la comunidad ubica problemas, recursos, actores y relaciones</td></tr>
-        <tr><td><strong>¿Para qué sirve?</strong></td><td>Identificar la dimensión <strong>espacial</strong> del diagnóstico: dónde ocurren las cosas</td></tr>
-        <tr><td><strong>¿Dónde se aplica?</strong></td><td>Territorios rurales o urbanos con extensión física identificable (veredas, barrios, corregimientos)</td></tr>
-        <tr><td><strong>Tipo de info</strong></td><td>Problemas ubicados, recursos, actores, conflictos territoriales, categorías temáticas</td></tr>
-        <tr><td><strong>Población ideal</strong></td><td>Comunidades con arraigo territorial, grupos de 8-20 personas, mixto</td></tr>
-        <tr><td><strong>Materiales</strong></td><td>Papel kraft grande, marcadores, post-its de colores, íconos impresos, cinta</td></tr>
+        <tr><td><strong>¿Para qué sirve?</strong></td><td>Identificar la dimensión <strong>espacial</strong> del diagnóstico</td></tr>
+        <tr><td><strong>¿Dónde se aplica?</strong></td><td>Territorios rurales o urbanos con extensión física identificable</td></tr>
+        <tr><td><strong>Tipo de info</strong></td><td>Problemas ubicados, recursos, actores, conflictos territoriales</td></tr>
+        <tr><td><strong>Población ideal</strong></td><td>Comunidades con arraigo territorial, grupos de 8-20 personas</td></tr>
+        <tr><td><strong>Materiales</strong></td><td>Papel kraft grande, marcadores, post-its, íconos, cinta</td></tr>
         <tr><td><strong>Duración</strong></td><td>2-3 horas</td></tr>
         <tr><td><strong>Rol del instructor</strong></td><td>Facilitador: guía sin imponer, pregunta, registra</td></tr>
-        <tr><td><strong>Categorías típicas</strong></td><td>Identidad cultural, TIC, fomento productivo, sostenibilidad (según convenciones)</td></tr>
       </table>
-
       <h3>📌 Recomendaciones clave</h3>
       <ul>
         <li>Definir <strong>convenciones</strong> antes de empezar (colores, íconos).</li>
         <li>Pedir que <strong>ubiquen</strong> cada problema, no solo que lo nombren.</li>
-        <li>Registrar el <strong>debate</strong> que surge al ubicar (no solo el resultado final).</li>
+        <li>Registrar el <strong>debate</strong> que surge al ubicar.</li>
         <li>Fotografiar el mapa <strong>completo</strong> y también <strong>por zonas</strong>.</li>
       </ul>
-
       <h3>🧩 Cómo se sistematiza</h3>
       <ul>
         <li>Cada post-it → un registro con <code>categoría</code>, <code>contenido</code>, <code>ubicación</code>.</li>
         <li>Los íconos → etiquetan la categoría.</li>
         <li>El debate → insumo para el <strong>resumen narrativo</strong>.</li>
       </ul>
-
-      <div class="img-note">
-        🖼️ <strong>Conexión con tus imágenes:</strong> En la cartografía compartida se ven íconos (engranaje, monitor, signo $, paleta) que etiquetan cada post-it según convención. La app debe reconocer esos íconos para asignar la categoría correcta.
-      </div>
     </div>
   </div>
 
-  <!-- ================= PANEL METAPLAN ================= -->
   <div id="panel-metaplan" class="panel">
     <div class="card">
       <h2><span>🟩</span> Metaplan</h2>
-
-      <!-- IMAGEN DEL INSTRUMENTO -->
-      <img src="img/metaplan.png" alt="Ejemplo de metaplan con post-its organizados por categorías" class="instrument-img">
-      <div class="instrument-img-caption">Ejemplo real de metaplan: cuatro columnas temáticas con tarjetas categorizadas.</div>
-
+      <img src="img/metaplan.png" alt="Ejemplo de metaplan" class="instrument-img">
+      <div class="instrument-img-caption">Ejemplo real: cuatro columnas temáticas con tarjetas categorizadas.</div>
       <table>
         <tr><th>Campo</th><th>Descripción</th></tr>
         <tr><td><strong>¿Qué es?</strong></td><td>Técnica de visualización y agrupación colectiva de ideas en tarjetas</td></tr>
-        <tr><td><strong>¿Para qué sirve?</strong></td><td><strong>Categorizar y priorizar</strong> problemas o propuestas de forma participativa</td></tr>
-        <tr><td><strong>¿Dónde se aplica?</strong></td><td>Cualquier espacio cerrado con pared o tablero; también en territorio con cartelera portátil</td></tr>
-        <tr><td><strong>Tipo de info</strong></td><td>Problemas/demandas agrupados por ejes temáticos, con orden de prioridad</td></tr>
-        <tr><td><strong>Población ideal</strong></td><td>Grupos de 10-25 personas, con facilitación fuerte; útil cuando hay muchas voces</td></tr>
+        <tr><td><strong>¿Para qué sirve?</strong></td><td><strong>Categorizar y priorizar</strong> problemas o propuestas</td></tr>
+        <tr><td><strong>¿Dónde se aplica?</strong></td><td>Espacio cerrado con pared o tablero</td></tr>
+        <tr><td><strong>Tipo de info</strong></td><td>Problemas/demandas agrupados por ejes temáticos</td></tr>
+        <tr><td><strong>Población ideal</strong></td><td>Grupos de 10-25 personas, con facilitación fuerte</td></tr>
         <tr><td><strong>Materiales</strong></td><td>Tarjetas de colores, marcadores, cinta, pared o tablero</td></tr>
         <tr><td><strong>Duración</strong></td><td>1.5-2.5 horas</td></tr>
         <tr><td><strong>Rol del instructor</strong></td><td>Moderador: guía la lluvia de ideas, agrupa, pregunta, sintetiza</td></tr>
       </table>
-
       <h3>📌 Recomendaciones clave</h3>
       <ul>
         <li><strong>Una idea por tarjeta</strong> (regla de oro).</li>
-        <li>Escribir con <strong>letra grande y clara</strong> (para la foto y para la comunidad).</li>
-        <li>Agrupar por <strong>afinidad temática</strong>, no por quién lo dijo.</li>
+        <li>Escribir con <strong>letra grande y clara</strong>.</li>
+        <li>Agrupar por <strong>afinidad temática</strong>.</li>
         <li>Preguntar siempre: <em>"¿esto es lo más importante para ustedes?"</em></li>
-        <li>Si hay muchas tarjetas, <strong>priorizar por votación</strong> (puntos, manos).</li>
       </ul>
-
       <h3>🧩 Cómo se sistematiza</h3>
       <ul>
         <li>Cada columna → una <code>categoría</code>.</li>
         <li>Cada tarjeta → un registro con <code>contenido</code>, <code>categoría</code>, <code>orden</code>.</li>
-        <li>La votación → insumo para la <strong>Matriz 2 (Priorización)</strong>.</li>
       </ul>
-
-      <div class="img-note">
-        🖼️ <strong>Conexión con tus imágenes:</strong> El metaplan tiene 4 columnas (Identidad, TIC, Fomento, Sostenibilidad) y filas de post-its. La app debe reconocer la columna y el orden de cada tarjeta.
-      </div>
     </div>
   </div>
 
-  <!-- ================= PANEL HISTORIAS ================= -->
   <div id="panel-historias" class="panel">
     <div class="card">
       <h2><span>📖</span> Historias de Vida</h2>
-
-      <!-- IMAGEN DEL INSTRUMENTO -->
-      <img src="img/historia_de_vida.png" alt="Ejemplo de historias de vida organizadas por rangos temporales" class="instrument-img">
-      <div class="instrument-img-caption">Ejemplo real de historias de vida: paneles por rango temporal con citas y ejes temáticos.</div>
-
+      <img src="img/historia_de_vida.png" alt="Ejemplo de historias de vida" class="instrument-img">
+      <div class="instrument-img-caption">Ejemplo real: paneles por rango temporal con citas y ejes temáticos.</div>
       <table>
         <tr><th>Campo</th><th>Descripción</th></tr>
-        <tr><td><strong>¿Qué es?</strong></td><td>Relatos individuales o colectivos sobre la trayectoria de vida de una persona o comunidad</td></tr>
+        <tr><td><strong>¿Qué es?</strong></td><td>Relatos individuales o colectivos sobre la trayectoria de vida</td></tr>
         <tr><td><strong>¿Para qué sirve?</strong></td><td>Recuperar <strong>memoria, percepciones y cambios</strong> en el tiempo</td></tr>
-        <tr><td><strong>¿Dónde se aplica?</strong></td><td>Espacios íntimos, tranquilos; puede ser en casa del entrevistado o en un lugar comunitario</td></tr>
+        <tr><td><strong>¿Dónde se aplica?</strong></td><td>Espacios íntimos, tranquilos</td></tr>
         <tr><td><strong>Tipo de info</strong></td><td>Narrativas, percepciones, cambios generacionales, saberes ancestrales</td></tr>
-        <tr><td><strong>Población ideal</strong></td><td>Personas mayores, líderes, mujeres, jóvenes con trayectoria; individual o grupos pequeños (3-5)</td></tr>
+        <tr><td><strong>Población ideal</strong></td><td>Personas mayores, líderes, mujeres, jóvenes con trayectoria</td></tr>
         <tr><td><strong>Materiales</strong></td><td>Grabadora (con consentimiento), libreta, guía de preguntas</td></tr>
         <tr><td><strong>Duración</strong></td><td>45 min - 2 horas por persona</td></tr>
         <tr><td><strong>Rol del instructor</strong></td><td>Escucha activa: pregunta, no interrumpe, no juzga</td></tr>
       </table>
-
       <h3>📌 Recomendaciones clave</h3>
       <ul>
         <li><strong>Consentimiento informado</strong> antes de grabar o fotografiar.</li>
-        <li>Preguntas <strong>abiertas</strong> ("¿cómo era antes...?", "¿qué cambió...?").</li>
+        <li>Preguntas <strong>abiertas</strong>.</li>
         <li><strong>No corregir</strong> ni completar las frases del entrevistado.</li>
-        <li>Registrar <strong>citas textuales</strong> (para no perder la voz propia).</li>
-        <li>Organizar por <strong>rangos temporales</strong> (ej: 1-5, 5-15, 15+).</li>
+        <li>Registrar <strong>citas textuales</strong>.</li>
+        <li>Organizar por <strong>rangos temporales</strong>.</li>
       </ul>
-
       <h3>🧩 Cómo se sistematiza</h3>
       <ul>
         <li>Cada historia → un registro con <code>eje temático</code>, <code>cita textual</code>, <code>temporalidad</code>.</li>
-        <li>Las citas → insumo para el <strong>resumen narrativo</strong> y para la columna "Situación" de la Matriz 3.</li>
-        <li>Los ejes repetidos → posibles <code>categorías</code>.</li>
+        <li>Las citas → insumo para el <strong>resumen narrativo</strong>.</li>
       </ul>
-
-      <div class="img-note">
-        🖼️ <strong>Conexión con tus imágenes:</strong> Los paneles temporales (1-5 años, 5-15, 15+) con citas subrayadas por eje temático. La app debe reconocer el rango temporal, el eje y la cita textual.
-      </div>
     </div>
   </div>
 
-  <!-- ================= PANEL EMPATÍA ================= -->
   <div id="panel-empatia" class="panel">
     <div class="card">
       <h2><span>🧠</span> Mapa de Empatía</h2>
-
-      <!-- IMAGEN DEL INSTRUMENTO -->
-      <img src="img/mapa_de_empatia.png" alt="Ejemplo de mapa de empatía con secciones radiales" class="instrument-img">
-      <div class="instrument-img-caption">Ejemplo real de mapa de empatía: diagrama radial con secciones y frases textuales.</div>
-
+      <img src="img/mapa_de_empatia.png" alt="Ejemplo de mapa de empatía" class="instrument-img">
+      <div class="instrument-img-caption">Ejemplo real: diagrama radial con secciones y frases textuales.</div>
       <table>
         <tr><th>Campo</th><th>Descripción</th></tr>
         <tr><td><strong>¿Qué es?</strong></td><td>Herramienta visual que organiza lo que una persona o grupo <strong>siente, ve, escucha, dice, hace</strong></td></tr>
-        <tr><td><strong>¿Para qué sirve?</strong></td><td>Comprender la dimensión <strong>subjetiva y emocional</strong> de una situación</td></tr>
-        <tr><td><strong>¿Dónde se aplica?</strong></td><td>Cualquier espacio; funciona muy bien con jóvenes y en contextos urbanos</td></tr>
+        <tr><td><strong>¿Para qué sirve?</strong></td><td>Comprender la dimensión <strong>subjetiva y emocional</strong></td></tr>
+        <tr><td><strong>¿Dónde se aplica?</strong></td><td>Cualquier espacio; funciona bien con jóvenes</td></tr>
         <tr><td><strong>Tipo de info</strong></td><td>Emociones, percepciones, miedos, sueños, frustraciones</td></tr>
         <tr><td><strong>Población ideal</strong></td><td>Jóvenes, mujeres, grupos vulnerables; grupos de 5-15 personas</td></tr>
         <tr><td><strong>Materiales</strong></td><td>Papel grande con el diagrama, post-its, marcadores</td></tr>
         <tr><td><strong>Duración</strong></td><td>1-1.5 horas</td></tr>
-        <tr><td><strong>Rol del instructor</strong></td><td>Facilitador empático: genera confianza, no invade, respeta silencios</td></tr>
+        <tr><td><strong>Rol del instructor</strong></td><td>Facilitador empático: genera confianza, no invade</td></tr>
       </table>
-
       <h3>📌 Recomendaciones clave</h3>
       <ul>
-        <li>Definir claramente <strong>el sujeto</strong> del mapa (ej: "situación de los jóvenes").</li>
-        <li>Trabajar por <strong>secciones</strong>: siento, veo, escucho, digo, hago, con quién, qué se ha hecho, qué podemos hacer.</li>
+        <li>Definir claramente <strong>el sujeto</strong> del mapa.</li>
+        <li>Trabajar por <strong>secciones</strong>.</li>
         <li><strong>No forzar</strong> a nadie a compartir lo que no quiere.</li>
-        <li>Registrar <strong>frases textuales</strong> (tienen mucho valor).</li>
+        <li>Registrar <strong>frases textuales</strong>.</li>
         <li><strong>Cuidado ético</strong>: son datos sensibles.</li>
       </ul>
-
       <h3>🧩 Cómo se sistematiza</h3>
       <ul>
-        <li>Cada frase → un registro con <code>sección</code>, <code>contenido</code>, <code>carga emocional</code> (positiva/negativa).</li>
+        <li>Cada frase → un registro con <code>sección</code>, <code>contenido</code>, <code>carga emocional</code>.</li>
         <li>Las secciones "veo", "escucho", "hago" → insumo para <strong>Debilidades y Amenazas</strong>.</li>
         <li>Las secciones "podemos hacer", "con quién" → insumo para <strong>Oportunidades y Fortalezas</strong>.</li>
       </ul>
-
-      <div class="img-note">
-        🖼️ <strong>Conexión con tus imágenes:</strong> El diagrama radial con secciones (¿Qué siento?, ¿Qué escucho?, ¿Qué veo?, ¿Qué se ha hecho?, ¿Con quién?, ¿Qué podemos hacer?). La app debe reconocer la sección y extraer la frase textual.
-      </div>
     </div>
   </div>
 
-  <!-- ================= PANEL SELECCIÓN ================= -->
   <div id="panel-seleccion" class="panel">
     <div class="card">
       <h2><span>⚖️</span> ¿Cuál instrumento usar y cuándo?</h2>
@@ -515,17 +229,13 @@
         <tr><td>Primera visita al territorio</td><td><span class="badge">Cartografía + Metaplan</span></td><td>Diagnóstico rápido y participativo</td></tr>
         <tr><td>Profundización</td><td><span class="badge">Historias de vida + Mapa de empatía</span></td><td>Riqueza narrativa y emocional</td></tr>
       </table>
-      <div class="highlight">
-        🔁 <strong>Recomendación general:</strong> aplicar al menos <strong>dos instrumentos complementarios</strong> (uno espacial/categórico + uno narrativo/emocional) para que la DOFA quede robusta.
-      </div>
+      <div class="highlight">🔁 <strong>Recomendación general:</strong> aplicar al menos <strong>dos instrumentos complementarios</strong>.</div>
     </div>
   </div>
 
-  <!-- ================= PANEL PROTOCOLO ================= -->
   <div id="panel-protocolo" class="panel">
     <div class="card">
       <h2><span>📋</span> Protocolo de aplicación en territorio</h2>
-
       <h3>🔹 ANTES</h3>
       <ul>
         <li>Contactar líderes comunitarios</li>
@@ -533,7 +243,6 @@
         <li>Definir lugar, hora y materiales</li>
         <li>Preparar convenciones (si es cartografía)</li>
       </ul>
-
       <h3>🔹 DURANTE</h3>
       <ul>
         <li>Presentación del equipo y del ejercicio</li>
@@ -542,21 +251,19 @@
         <li>Registrar TODO (fotos, audio, notas)</li>
         <li>Cerrar con síntesis colectiva</li>
       </ul>
-
       <h3>🔹 DESPUÉS</h3>
       <ul>
         <li>Agradecer y dejar claro qué sigue</li>
         <li>Fotografiar el resultado final (con buena luz y encuadre)</li>
-        <li>Digitalizar en la app el mismo día (o lo antes posible)</li>
-        <li>Escribir notas de contexto (qué no quedó en la foto)</li>
+        <li>Digitalizar en la app el mismo día</li>
+        <li>Escribir notas de contexto</li>
       </ul>
     </div>
   </div>
 
-  <!-- ================= PANEL CAPTURA APP ================= -->
   <div id="panel-captura" class="panel">
     <div class="card">
-      <h2><span>📸</span> Protocolo de captura fotográfica (para la app)</h2>
+      <h2><span>📸</span> Protocolo de captura fotográfica</h2>
       <table>
         <tr><th>Regla</th><th>Por qué</th></tr>
         <tr><td>Buena luz (natural, sin sombras)</td><td>Para que la IA pueda leer el texto</td></tr>
@@ -564,25 +271,22 @@
         <tr><td>Sin ángulos extremos</td><td>De frente, perpendicular</td></tr>
         <tr><td>Texto legible</td><td>Que las letras se vean nítidas</td></tr>
         <tr><td>Foto por zonas</td><td>Además de la general, tomas cercanas por sección</td></tr>
-        <tr><td>Etiquetar antes de subir</td><td>Indicar instrumento, territorio, fecha, categoría</td></tr>
+        <tr><td>Etiquetar antes de subir</td><td>Indicar instrumento, territorio, fecha</td></tr>
       </table>
-
       <h3>🧠 ¿Qué debe reconocer la IA según el instrumento?</h3>
       <table>
         <tr><th>Instrumento</th><th>Estructura visual</th><th>Qué debe reconocer</th></tr>
-        <tr><td>Cartografía social</td><td>Mapa con íconos + convenciones + post-its ubicados</td><td>Ubicación, categoría (según ícono), texto</td></tr>
-        <tr><td>Metaplan</td><td>Columnas + filas de post-its</td><td>Categoría (columna) + texto + orden</td></tr>
-        <tr><td>Historias de vida</td><td>Paneles temporales + texto subrayado</td><td>Rango temporal + eje temático + cita</td></tr>
-        <tr><td>Mapa de empatía</td><td>Diagrama radial con 6 secciones</td><td>Sección (siente/ve/escucha...) + texto</td></tr>
+        <tr><td>Cartografía social</td><td>Mapa con íconos + convenciones + post-its</td><td>Ubicación, categoría, texto</td></tr>
+        <tr><td>Metaplan</td><td>Columnas + filas de post-its</td><td>Categoría + texto + orden</td></tr>
+        <tr><td>Historias de vida</td><td>Paneles temporales + texto subrayado</td><td>Rango temporal + eje + cita</td></tr>
+        <tr><td>Mapa de empatía</td><td>Diagrama radial con 6 secciones</td><td>Sección + texto</td></tr>
       </table>
     </div>
   </div>
 
-  <!-- ================= PANEL MATRICES ================= -->
   <div id="panel-matrices" class="panel">
     <div class="card">
       <h2><span>📊</span> Flujo de las tres matrices</h2>
-
       <div class="matrix-flow">
         <div class="flow-step">📸 Instrumentos</div>
         <span class="flow-arrow">→</span>
@@ -592,47 +296,29 @@
         <span class="flow-arrow">→</span>
         <div class="flow-step">📊 Perfilamiento</div>
       </div>
-
       <h3>🔹 MATRIZ 1: DOFA</h3>
-      <p><strong>Insumo:</strong> Información del territorio (todos los instrumentos aplicados).</p>
       <table>
         <tr><th>Producto</th><th>Contenido</th></tr>
-        <tr><td>[a] Resumen narrativo</td><td>Síntesis escrita de lo encontrado en el territorio</td></tr>
-        <tr><td>[b] Mapa de actores</td><td>Quiénes están, qué rol tienen, qué relaciones existen</td></tr>
+        <tr><td>[a] Resumen narrativo</td><td>Síntesis escrita de lo encontrado</td></tr>
+        <tr><td>[b] Mapa de actores</td><td>Quiénes están, qué rol tienen</td></tr>
         <tr><td>[c] DOFA</td><td>Debilidades, Oportunidades, Fortalezas, Amenazas</td></tr>
         <tr><td>[d] Estrategias emergentes</td><td>Cruces DOFA: DO, FA, FO, DA</td></tr>
       </table>
-
-      <h4>¿Cómo aporta cada instrumento a la DOFA?</h4>
-      <table>
-        <tr><th>Cuadrante</th><th>Cartografía</th><th>Metaplan</th><th>Historias de vida</th><th>Mapa de empatía</th></tr>
-        <tr><td><strong>Debilidades</strong></td><td>Problemas ubicados</td><td>Post-its de carencias</td><td>"Antes había más unión"</td><td>"Siento que estudiar no sirve"</td></tr>
-        <tr><td><strong>Oportunidades</strong></td><td>Recursos del territorio</td><td>Demandas formativas</td><td>"El campo ofrece oportunidades"</td><td>"Podemos pedir apoyo"</td></tr>
-        <tr><td><strong>Fortalezas</strong></td><td>Actores y redes</td><td>Saberes previos</td><td>"Rescatar recetas"</td><td>"Con quién": grupos organizados</td></tr>
-        <tr><td><strong>Amenazas</strong></td><td>Conflictos territoriales</td><td>Riesgos</td><td>"Cambio climático ya se nota"</td><td>"Miedo de que hermanos terminen en pandillas"</td></tr>
-      </table>
-
       <h3>🔹 MATRIZ 2: PRIORIZACIÓN</h3>
-      <p><strong>Insumo:</strong> Estrategias emergentes DOFA.</p>
       <table>
         <tr><th>Columna</th><th>Contenido</th></tr>
         <tr><td>[a] Resumen narrativo</td><td>Síntesis del proceso de priorización</td></tr>
-        <tr><td>[b] Listado de acciones</td><td>Acciones correlacionadas con las estrategias emergentes</td></tr>
+        <tr><td>[b] Listado de acciones</td><td>Acciones correlacionadas con las estrategias</td></tr>
         <tr><td>[c] Importante / Prioritario</td><td>Clasificación según pertinencia misional</td></tr>
-        <tr><td>[d] Microacciones</td><td>Desglose solo de las acciones <strong>prioritarias</strong></td></tr>
-        <tr><td>[e] Resultados esperados</td><td>Qué se espera lograr con cada microacción</td></tr>
+        <tr><td>[d] Microacciones</td><td>Desglose solo de las prioritarias</td></tr>
+        <tr><td>[e] Resultados esperados</td><td>Qué se espera lograr</td></tr>
       </table>
-
       <div class="highlight">
         ⚖️ <strong>Distinción clave:</strong><br>
-        <span class="badge badge-green">PRIORITARIO</span> = Misional (lo que la entidad <strong>puede y debe</strong> hacer)<br>
-        <span class="badge badge-orange">IMPORTANTE</span> = No misional (necesario para el territorio, pero <strong>no le corresponde</strong> a esa entidad)
+        <span class="badge badge-green">PRIORITARIO</span> = Misional<br>
+        <span class="badge badge-orange">IMPORTANTE</span> = No misional
       </div>
-
-      <p><strong>Ejemplo (SENA):</strong> Territorio requiere <em>Formación</em> + <em>Seguridad en calles</em> → Formación es PRIORITARIO (misional), Seguridad es IMPORTANTE (no misional, lo asume otra entidad).</p>
-
       <h3>🔹 MATRIZ 3: PERFILAMIENTO</h3>
-      <p><strong>Insumo:</strong> Acciones <strong>priorizadas</strong> (solo las misionales) de la Matriz 2.</p>
       <table>
         <tr><th>Columna</th><th>Contenido</th></tr>
         <tr><td>[a] Resumen narrativo</td><td>Síntesis del perfilamiento</td></tr>
@@ -647,7 +333,6 @@
     </div>
   </div>
 
-  <!-- ================= PANEL POBLACIÓN ================= -->
   <div id="panel-poblacion" class="panel">
     <div class="card">
       <h2><span>👥</span> Recomendaciones por tipo de población</h2>
@@ -663,14 +348,13 @@
     </div>
   </div>
 
-  <!-- ================= PANEL ERRORES ================= -->
   <div id="panel-errores" class="panel">
     <div class="card">
       <h2><span>⚠️</span> Errores comunes y cómo evitarlos</h2>
       <table>
         <tr><th>Error</th><th>Cómo evitarlo</th></tr>
         <tr><td>Instructor impone temas</td><td>Facilitar, no dirigir</td></tr>
-        <tr><td>No se registra el debate</td><td>Grabar o tomar notas del proceso, no solo del resultado</td></tr>
+        <tr><td>No se registra el debate</td><td>Grabar o tomar notas del proceso</td></tr>
         <tr><td>Fotos borrosas o incompletas</td><td>Protocolo de captura</td></tr>
         <tr><td>Se pierde el papel</td><td>Digitalizar el mismo día</td></tr>
         <tr><td>No hay consentimiento</td><td>Formato de consentimiento informado</td></tr>
@@ -678,67 +362,553 @@
         <tr><td>No se etiqueta la información</td><td>Usar categorías y tipo de dato desde el inicio</td></tr>
         <tr><td>La DOFA queda coja</td><td>Cruzar instrumentos antes de llenarla</td></tr>
       </table>
+    </div>
+  </div>
 
-      <h3>🔗 Conexión con la app</h3>
-      <p>Con esta guía, la app puede:</p>
-      <ol>
-        <li>Pedir al instructor que <strong>seleccione el instrumento</strong> antes de fotografiar.</li>
-        <li>Aplicar un <strong>modelo de extracción distinto</strong> por instrumento.</li>
-        <li><strong>Etiquetar automáticamente</strong> cada registro con <code>instrumento</code>, <code>categoría</code>, <code>tipo_dato</code>.</li>
-        <li><strong>Sugerir qué matriz alimentar</strong> según el tipo de dato.</li>
-        <li><strong>Construir las matrices automáticamente</strong> con la información etiquetada.</li>
-        <li><strong>Generar el resumen narrativo</strong> a partir de las citas y el contexto.</li>
-      </ol>
+  <!-- ================= SECCIÓN DE PROCESAMIENTO CON IA ================= -->
+  <div id="procesamiento" style="margin-top: 2rem;">
+    <div class="card">
+      <h2><span>📤</span> Procesar instrumento con IA</h2>
+      
+      <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+        <button id="modoCaptura" class="toggle-btn active" style="flex:1;">📸 Captura automática</button>
+        <button id="modoAsistente" class="toggle-btn" style="flex:1;">🧠 Asistente IA</button>
+      </div>
+
+      <div id="panelCaptura">
+        <p style="color: #3e5e7a; margin-bottom: 1rem;">
+          Sube una fotografía del instrumento. La IA detectará el tipo automáticamente o podrás seleccionarlo manualmente.
+        </p>
+
+        <label style="font-weight: 600; display: block; margin-bottom: 0.5rem;">
+          Perfil de la entidad (opcional, para clasificar misional/no misional):
+        </label>
+        <input type="text" id="perfilEntidad" placeholder="Ej: SENA - Formación profesional integral, empleabilidad y emprendimiento" style="width: 100%; padding: 0.7rem; border-radius: 0.5rem; border: 1px solid #c2d6e8; margin-bottom: 1rem; font-size: 0.95rem;">
+        
+        <input type="file" id="inputImagen" accept="image/*" style="display: none;">
+        <button id="btnSubir" class="toggle-btn" style="background: #1d5e8f; color: white; padding: 1rem 2rem; width: 100%; font-size: 1.1rem;">
+          📸 Seleccionar o tomar foto
+        </button>
+        
+        <div id="previewContainer" style="display: none; margin-top: 1.5rem;">
+          <img id="previewImagen" style="max-width: 100%; border-radius: 1rem; border: 1px solid #c2d6e8;">
+          <p id="infoImagen" style="font-size: 0.85rem; color: #5a7a96; margin-top: 0.5rem;"></p>
+        </div>
+
+        <div id="selectorInstrumento" style="display: none; margin-top: 1.5rem;">
+          <label style="font-weight: 600; display: block; margin-bottom: 0.5rem;">Instrumento:</label>
+          <select id="selectInstrumento" style="padding: 0.6rem; border-radius: 0.5rem; border: 1px solid #c2d6e8; width: 100%;">
+            <option value="auto">🔍 Auto-detectar</option>
+            <option value="cartografia_social">🗺️ Cartografía Social</option>
+            <option value="metaplan">🟩 Metaplan</option>
+            <option value="historia_de_vida">📖 Historia de Vida</option>
+            <option value="mapa_de_empatia">🧠 Mapa de Empatía</option>
+          </select>
+        </div>
+
+        <button id="btnProcesar" class="toggle-btn" style="display: none; background: #0c6b4b; color: white; padding: 1rem 2rem; width: 100%; margin-top: 1rem; font-size: 1.1rem;">
+          🔍 Procesar imagen
+        </button>
+
+        <div id="estadoProcesamiento" style="display: none; margin-top: 1.5rem; text-align: center; color: #1d5e8f; font-weight: 500;">
+          ⏳ Analizando imagen con IA...
+        </div>
+
+        <div id="alertaNoIdentificado" style="display: none; margin-top: 1rem; background: #fef0d9; border-left: 5px solid #a86100; padding: 1rem; border-radius: 0.8rem; color: #a86100;">
+          ⚠️ <strong>Instrumento no identificado con suficiente confianza.</strong> Por favor selecciona el tipo manualmente y vuelve a procesar.
+        </div>
+
+        <div id="resultadoAnalisis" style="display: none; margin-top: 1.5rem;">
+          <h3 style="color: #1d5e8f;">✅ Análisis completado</h3>
+          <div id="instrumentoDetectado" style="font-size: 1.05rem; margin: 0.5rem 0 1rem;"></div>
+          <div id="resumenTexto" style="background: #f9fcff; padding: 1rem; border-radius: 0.8rem; margin: 1rem 0; font-size: 0.95rem;"></div>
+          
+          <h3 style="color: #1d5e8f; margin-top: 1.5rem;">📊 Matriz DOFA</h3>
+          <div id="matricesPreview" style="font-size: 0.9rem; overflow-x: auto;"></div>
+
+          <h3 style="color: #1d5e8f; margin-top: 1.5rem;">👥 Mapa de actores</h3>
+          <div id="actoresPreview" style="font-size: 0.9rem; overflow-x: auto;"></div>
+
+          <div id="matricesAvanzadas" style="display: none;">
+            <h3 style="color: #1d5e8f; margin-top: 1.5rem;">📋 Matriz de Priorización</h3>
+            <div id="priorizacionPreview" style="font-size: 0.9rem; overflow-x: auto;"></div>
+
+            <h3 style="color: #1d5e8f; margin-top: 1.5rem;">🎯 Matriz de Perfilamiento</h3>
+            <div id="perfilamientoPreview" style="font-size: 0.9rem; overflow-x: auto;"></div>
+          </div>
+
+          <button id="btnGenerarAvanzadas" class="toggle-btn" style="background: #2a7faa; color: white; padding: 1rem 2rem; width: 100%; margin-top: 1.5rem; font-size: 1.05rem;">
+            🚀 Generar matrices de Priorización y Perfilamiento
+          </button>
+
+          <button id="btnGenerarPDF" class="toggle-btn" style="background: #a86100; color: white; padding: 1rem 2rem; width: 100%; margin-top: 1rem; font-size: 1.1rem;">
+            📄 Generar y descargar PDF
+          </button>
+        </div>
+      </div>
+
+      <div id="panelAsistente" style="display: none;">
+        <p style="color: #3e5e7a; margin-bottom: 1rem;">
+          Describe el contexto del territorio y te recomendaré qué instrumento aplicar.
+        </p>
+        <textarea id="textoAsistente" placeholder="Ej: Voy a trabajar con jóvenes en zona urbana sobre empleo y emprendimiento..." style="width: 100%; height: 120px; padding: 1rem; border-radius: 0.8rem; border: 1px solid #c2d6e8; font-family: inherit; font-size: 1rem; resize: vertical;"></textarea>
+        <button id="btnAsistente" class="toggle-btn" style="background: #1d5e8f; color: white; padding: 1rem 2rem; width: 100%; margin-top: 1rem; font-size: 1.1rem;">
+          🧠 Obtener recomendación
+        </button>
+        <div id="resultadoAsistente" style="display: none; margin-top: 1.5rem; background: #f0f6fe; padding: 1.5rem; border-radius: 1rem; border-left: 5px solid #1d5e8f; white-space: pre-wrap;"></div>
+      </div>
     </div>
   </div>
 
 </div>
 
 <script>
-  // ================= SPAGHETTI TOGGLE NAV =================
+  // ================= TOGGLE NAV =================
   (function() {
-    const buttons = document.querySelectorAll('.toggle-btn');
+    const buttons = document.querySelectorAll('.toggle-btn[data-panel]');
     const panels = document.querySelectorAll('.panel');
-
     function activatePanel(panelId) {
-      panels.forEach(function(panel) {
-        panel.classList.remove('active');
-      });
-      const targetPanel = document.getElementById(panelId);
-      if (targetPanel) {
-        targetPanel.classList.add('active');
-      }
-
-      buttons.forEach(function(btn) {
-        btn.classList.remove('active');
-      });
-      const activeBtn = Array.from(buttons).find(function(btn) {
-        return btn.getAttribute('data-panel') === panelId;
-      });
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-      }
+      panels.forEach(p => p.classList.remove('active'));
+      const target = document.getElementById(panelId);
+      if (target) target.classList.add('active');
+      buttons.forEach(b => b.classList.remove('active'));
+      const activeBtn = Array.from(buttons).find(b => b.getAttribute('data-panel') === panelId);
+      if (activeBtn) activeBtn.classList.add('active');
     }
-
-    buttons.forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function() {
         const panelId = this.getAttribute('data-panel');
-        if (panelId) {
-          activatePanel(panelId);
-        }
+        if (panelId) activatePanel(panelId);
       });
     });
-
-    const activePanel = document.querySelector('.panel.active');
-    if (!activePanel) {
-      if (panels.length > 0) {
-        panels[0].classList.add('active');
-      }
-      if (buttons.length > 0) {
-        buttons[0].classList.add('active');
-      }
-    }
   })();
+
+  // ============================================================
+  // CONFIGURACIÓN
+  // ============================================================
+  const WORKER_URL = 'https://jolly-butterfly-2a8b.hfhoyos.workers.dev/';
+
+  // ============================================================
+  // NAVEGACIÓN ENTRE MODOS
+  // ============================================================
+  const modoCaptura = document.getElementById('modoCaptura');
+  const modoAsistente = document.getElementById('modoAsistente');
+  const panelCaptura = document.getElementById('panelCaptura');
+  const panelAsistente = document.getElementById('panelAsistente');
+
+  modoCaptura.addEventListener('click', () => {
+    modoCaptura.classList.add('active');
+    modoAsistente.classList.remove('active');
+    panelCaptura.style.display = 'block';
+    panelAsistente.style.display = 'none';
+  });
+
+  modoAsistente.addEventListener('click', () => {
+    modoAsistente.classList.add('active');
+    modoCaptura.classList.remove('active');
+    panelAsistente.style.display = 'block';
+    panelCaptura.style.display = 'none';
+  });
+
+  // ============================================================
+  // REDUCCIÓN DE IMAGEN
+  // ============================================================
+  function reducirImagen(file, maxWidth = 1024, maxSizeKB = 250) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+          if (width > maxWidth) {
+            height = (maxWidth / width) * height;
+            width = maxWidth;
+          }
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          let quality = 0.8;
+          let dataUrl = canvas.toDataURL('image/jpeg', quality);
+          while (dataUrl.length > maxSizeKB * 1024 * 1.37 && quality > 0.2) {
+            quality -= 0.1;
+            dataUrl = canvas.toDataURL('image/jpeg', quality);
+          }
+          resolve({
+            base64: dataUrl.split(',')[1],
+            info: `${width}x${height}px · ${Math.round(dataUrl.length / 1024)}KB · Calidad: ${Math.round(quality * 100)}%`
+          });
+        };
+        img.onerror = reject;
+        img.src = e.target.result;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ============================================================
+  // ESTADO GLOBAL
+  // ============================================================
+  let imagenData = null;
+  let analisisActual = null;
+  let matricesAvanzadasActual = null;
+
+  // ============================================================
+  // ELEMENTOS
+  // ============================================================
+  const btnSubir = document.getElementById('btnSubir');
+  const inputImagen = document.getElementById('inputImagen');
+  const previewContainer = document.getElementById('previewContainer');
+  const previewImagen = document.getElementById('previewImagen');
+  const infoImagen = document.getElementById('infoImagen');
+  const selectorInstrumento = document.getElementById('selectorInstrumento');
+  const btnProcesar = document.getElementById('btnProcesar');
+  const estadoProcesamiento = document.getElementById('estadoProcesamiento');
+  const resultadoAnalisis = document.getElementById('resultadoAnalisis');
+  const instrumentoDetectado = document.getElementById('instrumentoDetectado');
+  const resumenTexto = document.getElementById('resumenTexto');
+  const matricesPreview = document.getElementById('matricesPreview');
+  const actoresPreview = document.getElementById('actoresPreview');
+  const matrizPriorizacion = document.getElementById('priorizacionPreview');
+  const matrizPerfilamiento = document.getElementById('perfilamientoPreview');
+  const matricesAvanzadasDiv = document.getElementById('matricesAvanzadas');
+  const alertaNoIdentificado = document.getElementById('alertaNoIdentificado');
+  const btnGenerarAvanzadas = document.getElementById('btnGenerarAvanzadas');
+  const btnGenerarPDF = document.getElementById('btnGenerarPDF');
+
+  btnSubir.addEventListener('click', () => inputImagen.click());
+
+  inputImagen.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const resultado = await reducirImagen(file);
+      imagenData = resultado;
+      previewImagen.src = `data:image/jpeg;base64,${resultado.base64}`;
+      infoImagen.textContent = resultado.info;
+      previewContainer.style.display = 'block';
+      selectorInstrumento.style.display = 'block';
+      btnProcesar.style.display = 'block';
+    } catch (error) {
+      alert('Error al procesar la imagen: ' + error.message);
+    }
+  });
+
+  // ============================================================
+  // PROCESAR IMAGEN
+  // ============================================================
+  btnProcesar.addEventListener('click', async () => {
+    if (!imagenData) return;
+    const instrumentoSeleccionado = document.getElementById('selectInstrumento').value;
+    const perfilEntidad = document.getElementById('perfilEntidad').value;
+
+    estadoProcesamiento.style.display = 'block';
+    resultadoAnalisis.style.display = 'none';
+    alertaNoIdentificado.style.display = 'none';
+    matricesAvanzadasDiv.style.display = 'none';
+    btnProcesar.disabled = true;
+
+    try {
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          imagenBase64: imagenData.base64,
+          instrumentoSeleccionado: instrumentoSeleccionado,
+          perfilEntidad: perfilEntidad
+        })
+      });
+
+      const data = await response.json();
+      if (data.error) throw new Error(data.error);
+
+      if (data.instrumento === 'no_identificado') {
+        alertaNoIdentificado.style.display = 'block';
+        instrumentoDetectado.innerHTML = '⚠️ <strong>Instrumento no identificado.</strong>';
+        selectorInstrumento.style.display = 'block';
+        document.getElementById('selectInstrumento').value = 'auto';
+        return;
+      }
+
+      analisisActual = data;
+
+      const nombres = {
+        cartografia_social: '🗺️ Cartografía Social',
+        metaplan: '🟩 Metaplan',
+        historia_de_vida: '📖 Historia de Vida',
+        mapa_de_empatia: '🧠 Mapa de Empatía'
+      };
+
+      instrumentoDetectado.innerHTML = `Instrumento detectado: <strong>${nombres[data.instrumento] || data.instrumento}</strong> · Confianza: <strong>${Math.round((data.confianza || 0) * 100)}%</strong>`;
+      resumenTexto.textContent = data.datos.resumen_narrativo || 'Resumen no disponible.';
+
+      // MATRIZ DOFA
+      const dofa = data.matrices.dofa || {};
+      let htmlDofa = '<table style="width:100%; font-size:0.85rem; border-collapse:collapse;">';
+      htmlDofa += '<tr style="background:#e3eef9;"><th style="padding:0.5rem;">Debilidades</th><th style="padding:0.5rem;">Oportunidades</th><th style="padding:0.5rem;">Fortalezas</th><th style="padding:0.5rem;">Amenazas</th></tr>';
+      htmlDofa += '<tr>';
+      htmlDofa += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${(dofa.debilidades || []).join('<br>') || '—'}</td>`;
+      htmlDofa += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${(dofa.oportunidades || []).join('<br>') || '—'}</td>`;
+      htmlDofa += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${(dofa.fortalezas || []).join('<br>') || '—'}</td>`;
+      htmlDofa += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${(dofa.amenazas || []).join('<br>') || '—'}</td>`;
+      htmlDofa += '</tr></table>';
+      matricesPreview.innerHTML = htmlDofa;
+
+      // MAPA DE ACTORES
+      const actores = data.matrices.mapa_actores || [];
+      if (actores.length > 0) {
+        let htmlActores = '<table style="width:100%; font-size:0.85rem; border-collapse:collapse;">';
+        htmlActores += '<tr style="background:#e3eef9;"><th style="padding:0.5rem;">Actor</th><th style="padding:0.5rem;">Rol</th><th style="padding:0.5rem;">Relación</th><th style="padding:0.5rem;">Ubicación</th></tr>';
+        actores.forEach(a => {
+          htmlActores += '<tr>';
+          htmlActores += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.nombre || '—'}</td>`;
+          htmlActores += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.rol || '—'}</td>`;
+          htmlActores += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.relacion || '—'}</td>`;
+          htmlActores += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.ubicacion || '—'}</td>`;
+          htmlActores += '</tr>';
+        });
+        htmlActores += '</table>';
+        actoresPreview.innerHTML = htmlActores;
+      } else {
+        actoresPreview.innerHTML = '<p style="color:#5a7a96; font-style:italic;">No se identificaron actores explícitos.</p>';
+      }
+
+      resultadoAnalisis.style.display = 'block';
+
+    } catch (error) {
+      alert('Error al procesar: ' + error.message);
+    } finally {
+      estadoProcesamiento.style.display = 'none';
+      btnProcesar.disabled = false;
+    }
+  });
+
+  // ============================================================
+  // GENERAR MATRICES AVANZADAS
+  // ============================================================
+  btnGenerarAvanzadas.addEventListener('click', async () => {
+    if (!analisisActual) return;
+    const perfilEntidad = document.getElementById('perfilEntidad').value;
+
+    btnGenerarAvanzadas.disabled = true;
+    btnGenerarAvanzadas.textContent = '⏳ Generando matrices avanzadas...';
+
+    try {
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          analisisPrevios: analisisActual.datos,
+          perfilEntidad: perfilEntidad
+        })
+      });
+
+      const data = await response.json();
+      if (data.error) throw new Error(data.error);
+
+      matricesAvanzadasActual = data;
+
+      // PRIORIZACIÓN
+      const prio = data.matriz_priorizacion || {};
+      let htmlPrio = '';
+      if (prio.resumen_narrativo) {
+        htmlPrio += `<p style="margin-bottom:0.8rem;"><strong>Resumen:</strong> ${prio.resumen_narrativo}</p>`;
+      }
+      if (prio.acciones && prio.acciones.length > 0) {
+        htmlPrio += '<table style="width:100%; font-size:0.85rem; border-collapse:collapse;">';
+        htmlPrio += '<tr style="background:#e3eef9;"><th style="padding:0.5rem;">Acción</th><th style="padding:0.5rem;">Estrategia</th><th style="padding:0.5rem;">Clasificación</th><th style="padding:0.5rem;">Microacciones</th><th style="padding:0.5rem;">Resultado</th></tr>';
+        prio.acciones.forEach(a => {
+          const badge = a.clasificacion === 'prioritario' ? 'badge-green' : 'badge-orange';
+          htmlPrio += '<tr>';
+          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.accion || '—'}</td>`;
+          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.estrategia_origen || '—'}</td>`;
+          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;"><span class="badge ${badge}">${a.clasificacion || '—'}</span></td>`;
+          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${(a.microacciones || []).join('<br>') || '—'}</td>`;
+          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.resultado_esperado || '—'}</td>`;
+          htmlPrio += '</tr>';
+        });
+        htmlPrio += '</table>';
+      }
+      matrizPriorizacion.innerHTML = htmlPrio || '<p style="color:#5a7a96; font-style:italic;">No se generaron acciones.</p>';
+
+      // PERFILAMIENTO
+      const perf = data.matriz_perfilamiento || {};
+      let htmlPerf = '';
+      if (perf.resumen_narrativo) {
+        htmlPerf += `<p style="margin-bottom:0.8rem;"><strong>Resumen:</strong> ${perf.resumen_narrativo}</p>`;
+      }
+      if (perf.acciones_priorizadas && perf.acciones_priorizadas.length > 0) {
+        htmlPerf += '<table style="width:100%; font-size:0.85rem; border-collapse:collapse;">';
+        htmlPerf += '<tr style="background:#e3eef9;"><th style="padding:0.5rem;">Situación</th><th style="padding:0.5rem;">Acción</th><th style="padding:0.5rem;">Nivel</th><th style="padding:0.5rem;">Resultado</th><th style="padding:0.5rem;">Responsable</th><th style="padding:0.5rem;">Producto</th><th style="padding:0.5rem;">Indicadores</th></tr>';
+        perf.acciones_priorizadas.forEach(a => {
+          const nivelColor = a.nivel_prioridad === 'alto' ? 'badge-red' : a.nivel_prioridad === 'medio' ? 'badge-orange' : 'badge-green';
+          htmlPerf += '<tr>';
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.situacion || '—'}</td>`;
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.accion_priorizada || '—'}</td>`;
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;"><span class="badge ${nivelColor}">${a.nivel_prioridad || '—'}</span></td>`;
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.resultado_esperado || '—'}</td>`;
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.responsable || '—'}</td>`;
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.producto_esperado || '—'}</td>`;
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${(a.indicadores || []).join('<br>') || '—'}</td>`;
+          htmlPerf += '</tr>';
+        });
+        htmlPerf += '</table>';
+      }
+      matrizPerfilamiento.innerHTML = htmlPerf || '<p style="color:#5a7a96; font-style:italic;">No se generaron acciones.</p>';
+
+      matricesAvanzadasDiv.style.display = 'block';
+
+    } catch (error) {
+      alert('Error al generar matrices avanzadas: ' + error.message);
+    } finally {
+      btnGenerarAvanzadas.disabled = false;
+      btnGenerarAvanzadas.textContent = '🚀 Generar matrices de Priorización y Perfilamiento';
+    }
+  });
+
+  // ============================================================
+  // GENERACIÓN DE PDF
+  // ============================================================
+  btnGenerarPDF.addEventListener('click', () => {
+    if (!analisisActual) return;
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('p', 'mm', 'a4');
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 15;
+    const maxWidth = pageWidth - margin * 2;
+    let y = margin;
+
+    function agregarTexto(texto, fontSize = 10, esTitulo = false) {
+      doc.setFontSize(fontSize);
+      doc.setFont(undefined, esTitulo ? 'bold' : 'normal');
+      const lineas = doc.splitTextToSize(String(texto), maxWidth);
+      lineas.forEach(linea => {
+        if (y > pageHeight - margin) {
+          doc.addPage();
+          y = margin;
+        }
+        doc.text(linea, margin, y);
+        y += fontSize * 0.5;
+      });
+      y += 3;
+    }
+
+    agregarTexto('SISTEMATIZACIÓN DE INSTRUMENTOS PARTICIPATIVOS', 16, true);
+    agregarTexto('Investigación Acción Participación (IAP)', 12);
+    y += 5;
+    agregarTexto(`Instrumento: ${analisisActual.instrumento}`, 11);
+    agregarTexto(`Fecha: ${new Date().toLocaleDateString('es-CO')}`, 11);
+    agregarTexto(`Confianza: ${Math.round((analisisActual.confianza || 0) * 100)}%`, 11);
+    y += 10;
+
+    agregarTexto('RESUMEN NARRATIVO', 14, true);
+    agregarTexto(analisisActual.datos.resumen_narrativo || 'No disponible.', 10);
+    y += 5;
+
+    const dofa = analisisActual.matrices.dofa || {};
+    agregarTexto('MATRIZ DOFA', 14, true);
+    agregarTexto('Debilidades:', 11, true);
+    agregarTexto((dofa.debilidades || []).join('\n') || '—', 10);
+    agregarTexto('Oportunidades:', 11, true);
+    agregarTexto((dofa.oportunidades || []).join('\n') || '—', 10);
+    agregarTexto('Fortalezas:', 11, true);
+    agregarTexto((dofa.fortalezas || []).join('\n') || '—', 10);
+    agregarTexto('Amenazas:', 11, true);
+    agregarTexto((dofa.amenazas || []).join('\n') || '—', 10);
+    y += 5;
+
+    const actores = analisisActual.matrices.mapa_actores || [];
+    if (actores.length > 0) {
+      agregarTexto('MAPA DE ACTORES', 14, true);
+      actores.forEach(a => {
+        agregarTexto(`• ${a.nombre || '—'} (${a.rol || '—'})`, 11, true);
+        agregarTexto(`  Relación: ${a.relacion || '—'}`, 10);
+        if (a.ubicacion && a.ubicacion !== 'no aplica') {
+          agregarTexto(`  Ubicación: ${a.ubicacion}`, 10);
+        }
+      });
+    }
+
+    if (matricesAvanzadasActual) {
+      doc.addPage();
+      y = margin;
+
+      const prio = matricesAvanzadasActual.matriz_priorizacion || {};
+      agregarTexto('MATRIZ DE PRIORIZACIÓN', 14, true);
+      agregarTexto(prio.resumen_narrativo || '', 10);
+      y += 3;
+      (prio.acciones || []).forEach((a, i) => {
+        agregarTexto(`${i + 1}. ${a.accion || '—'}`, 11, true);
+        agregarTexto(`   Estrategia: ${a.estrategia_origen || '—'}`, 10);
+        agregarTexto(`   Clasificación: ${a.clasificacion || '—'}`, 10);
+        agregarTexto(`   Justificación: ${a.justificacion_misional || '—'}`, 10);
+        agregarTexto(`   Microacciones: ${(a.microacciones || []).join('; ') || '—'}`, 10);
+        agregarTexto(`   Resultado esperado: ${a.resultado_esperado || '—'}`, 10);
+        y += 2;
+      });
+
+      doc.addPage();
+      y = margin;
+      const perf = matricesAvanzadasActual.matriz_perfilamiento || {};
+      agregarTexto('MATRIZ DE PERFILAMIENTO', 14, true);
+      agregarTexto(perf.resumen_narrativo || '', 10);
+      y += 3;
+      (perf.acciones_priorizadas || []).forEach((a, i) => {
+        agregarTexto(`${i + 1}. ${a.accion_priorizada || '—'}`, 11, true);
+        agregarTexto(`   Situación: ${a.situacion || '—'}`, 10);
+        agregarTexto(`   Nivel de prioridad: ${a.nivel_prioridad || '—'}`, 10);
+        agregarTexto(`   Resultado esperado: ${a.resultado_esperado || '—'}`, 10);
+        agregarTexto(`   Responsable: ${a.responsable || '—'}`, 10);
+        agregarTexto(`   Producto esperado: ${a.producto_esperado || '—'}`, 10);
+        agregarTexto(`   Indicadores: ${(a.indicadores || []).join('; ') || '—'}`, 10);
+        y += 2;
+      });
+    }
+
+    const nombreArchivo = `sistematizacion_${analisisActual.instrumento}_${Date.now()}.pdf`;
+    doc.save(nombreArchivo);
+  });
+
+  // ============================================================
+  // MODO ASISTENTE IA
+  // ============================================================
+  const btnAsistente = document.getElementById('btnAsistente');
+  const resultadoAsistente = document.getElementById('resultadoAsistente');
+
+  btnAsistente.addEventListener('click', async () => {
+    const texto = document.getElementById('textoAsistente').value.trim();
+    if (!texto) {
+      alert('Por favor describe el contexto del territorio.');
+      return;
+    }
+
+    btnAsistente.disabled = true;
+    btnAsistente.textContent = '⏳ Pensando...';
+    resultadoAsistente.style.display = 'none';
+
+    try {
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ textoAsistente: texto })
+      });
+
+      const data = await response.json();
+      resultadoAsistente.innerHTML = `<h3 style="color:#1d5e8f; margin-bottom:0.8rem;">🧠 Recomendación</h3><p style="white-space: pre-wrap;">${data.recomendacion}</p>`;
+      resultadoAsistente.style.display = 'block';
+
+    } catch (error) {
+      alert('Error: ' + error.message);
+    } finally {
+      btnAsistente.disabled = false;
+      btnAsistente.textContent = '🧠 Obtener recomendación';
+    }
+  });
 </script>
 
 </body>
