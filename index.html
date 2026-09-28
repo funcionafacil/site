@@ -64,6 +64,7 @@
     <button class="toggle-btn" data-panel="panel-errores">⚠️ Errores comunes</button>
   </div>
 
+  <!-- ================= PANEL INTRODUCCIÓN ================= -->
   <div id="panel-intro" class="panel active">
     <div class="card">
       <h2><span>🎯</span> ¿Qué es esta guía?</h2>
@@ -89,6 +90,7 @@
     </div>
   </div>
 
+  <!-- ================= PANEL CARTOGRAFÍA ================= -->
   <div id="panel-cartografia" class="panel">
     <div class="card">
       <h2><span>🗺️</span> Cartografía Social</h2>
@@ -121,6 +123,7 @@
     </div>
   </div>
 
+  <!-- ================= PANEL METAPLAN ================= -->
   <div id="panel-metaplan" class="panel">
     <div class="card">
       <h2><span>🟩</span> Metaplan</h2>
@@ -152,6 +155,7 @@
     </div>
   </div>
 
+  <!-- ================= PANEL HISTORIAS ================= -->
   <div id="panel-historias" class="panel">
     <div class="card">
       <h2><span>📖</span> Historias de Vida</h2>
@@ -184,6 +188,7 @@
     </div>
   </div>
 
+  <!-- ================= PANEL EMPATÍA ================= -->
   <div id="panel-empatia" class="panel">
     <div class="card">
       <h2><span>🧠</span> Mapa de Empatía</h2>
@@ -217,6 +222,7 @@
     </div>
   </div>
 
+  <!-- ================= PANEL SELECCIÓN ================= -->
   <div id="panel-seleccion" class="panel">
     <div class="card">
       <h2><span>⚖️</span> ¿Cuál instrumento usar y cuándo?</h2>
@@ -233,6 +239,7 @@
     </div>
   </div>
 
+  <!-- ================= PANEL PROTOCOLO ================= -->
   <div id="panel-protocolo" class="panel">
     <div class="card">
       <h2><span>📋</span> Protocolo de aplicación en territorio</h2>
@@ -261,6 +268,7 @@
     </div>
   </div>
 
+  <!-- ================= PANEL CAPTURA APP ================= -->
   <div id="panel-captura" class="panel">
     <div class="card">
       <h2><span>📸</span> Protocolo de captura fotográfica</h2>
@@ -284,6 +292,7 @@
     </div>
   </div>
 
+  <!-- ================= PANEL MATRICES ================= -->
   <div id="panel-matrices" class="panel">
     <div class="card">
       <h2><span>📊</span> Flujo de las tres matrices</h2>
@@ -333,6 +342,7 @@
     </div>
   </div>
 
+  <!-- ================= PANEL POBLACIÓN ================= -->
   <div id="panel-poblacion" class="panel">
     <div class="card">
       <h2><span>👥</span> Recomendaciones por tipo de población</h2>
@@ -348,6 +358,7 @@
     </div>
   </div>
 
+  <!-- ================= PANEL ERRORES ================= -->
   <div id="panel-errores" class="panel">
     <div class="card">
       <h2><span>⚠️</span> Errores comunes y cómo evitarlos</h2>
@@ -369,12 +380,13 @@
   <div id="procesamiento" style="margin-top: 2rem;">
     <div class="card">
       <h2><span>📤</span> Procesar instrumento con IA</h2>
-      
+
       <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
         <button id="modoCaptura" class="toggle-btn active" style="flex:1;">📸 Captura automática</button>
         <button id="modoAsistente" class="toggle-btn" style="flex:1;">🧠 Asistente IA</button>
       </div>
 
+      <!-- MODO CAPTURA -->
       <div id="panelCaptura">
         <p style="color: #3e5e7a; margin-bottom: 1rem;">
           Sube una fotografía del instrumento. La IA detectará el tipo automáticamente o podrás seleccionarlo manualmente.
@@ -384,12 +396,12 @@
           Perfil de la entidad (opcional, para clasificar misional/no misional):
         </label>
         <input type="text" id="perfilEntidad" placeholder="Ej: SENA - Formación profesional integral, empleabilidad y emprendimiento" style="width: 100%; padding: 0.7rem; border-radius: 0.5rem; border: 1px solid #c2d6e8; margin-bottom: 1rem; font-size: 0.95rem;">
-        
+
         <input type="file" id="inputImagen" accept="image/*" style="display: none;">
         <button id="btnSubir" class="toggle-btn" style="background: #1d5e8f; color: white; padding: 1rem 2rem; width: 100%; font-size: 1.1rem;">
           📸 Seleccionar o tomar foto
         </button>
-        
+
         <div id="previewContainer" style="display: none; margin-top: 1.5rem;">
           <img id="previewImagen" style="max-width: 100%; border-radius: 1rem; border: 1px solid #c2d6e8;">
           <p id="infoImagen" style="font-size: 0.85rem; color: #5a7a96; margin-top: 0.5rem;"></p>
@@ -422,12 +434,15 @@
           <h3 style="color: #1d5e8f;">✅ Análisis completado</h3>
           <div id="instrumentoDetectado" style="font-size: 1.05rem; margin: 0.5rem 0 1rem;"></div>
           <div id="resumenTexto" style="background: #f9fcff; padding: 1rem; border-radius: 0.8rem; margin: 1rem 0; font-size: 0.95rem;"></div>
-          
+
           <h3 style="color: #1d5e8f; margin-top: 1.5rem;">📊 Matriz DOFA</h3>
           <div id="matricesPreview" style="font-size: 0.9rem; overflow-x: auto;"></div>
 
           <h3 style="color: #1d5e8f; margin-top: 1.5rem;">👥 Mapa de actores</h3>
           <div id="actoresPreview" style="font-size: 0.9rem; overflow-x: auto;"></div>
+
+          <h3 style="color: #1d5e8f; margin-top: 1.5rem;">🎯 Estrategias emergentes y macroestrategias</h3>
+          <div id="estrategiasPreview" style="font-size: 0.9rem;"></div>
 
           <div id="matricesAvanzadas" style="display: none;">
             <h3 style="color: #1d5e8f; margin-top: 1.5rem;">📋 Matriz de Priorización</h3>
@@ -447,6 +462,7 @@
         </div>
       </div>
 
+      <!-- MODO ASISTENTE -->
       <div id="panelAsistente" style="display: none;">
         <p style="color: #3e5e7a; margin-bottom: 1rem;">
           Describe el contexto del territorio y te recomendaré qué instrumento aplicar.
@@ -572,8 +588,9 @@
   const resumenTexto = document.getElementById('resumenTexto');
   const matricesPreview = document.getElementById('matricesPreview');
   const actoresPreview = document.getElementById('actoresPreview');
-  const matrizPriorizacion = document.getElementById('priorizacionPreview');
-  const matrizPerfilamiento = document.getElementById('perfilamientoPreview');
+  const estrategiasPreview = document.getElementById('estrategiasPreview');
+  const priorizacionPreview = document.getElementById('priorizacionPreview');
+  const perfilamientoPreview = document.getElementById('perfilamientoPreview');
   const matricesAvanzadasDiv = document.getElementById('matricesAvanzadas');
   const alertaNoIdentificado = document.getElementById('alertaNoIdentificado');
   const btnGenerarAvanzadas = document.getElementById('btnGenerarAvanzadas');
@@ -646,7 +663,7 @@
       resumenTexto.textContent = data.datos.resumen_narrativo || 'Resumen no disponible.';
 
       // MATRIZ DOFA
-      const dofa = data.matrices.dofa || {};
+      const dofa = (data.datos && data.datos.dofa) || {};
       let htmlDofa = '<table style="width:100%; font-size:0.85rem; border-collapse:collapse;">';
       htmlDofa += '<tr style="background:#e3eef9;"><th style="padding:0.5rem;">Debilidades</th><th style="padding:0.5rem;">Oportunidades</th><th style="padding:0.5rem;">Fortalezas</th><th style="padding:0.5rem;">Amenazas</th></tr>';
       htmlDofa += '<tr>';
@@ -655,19 +672,32 @@
       htmlDofa += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${(dofa.fortalezas || []).join('<br>') || '—'}</td>`;
       htmlDofa += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${(dofa.amenazas || []).join('<br>') || '—'}</td>`;
       htmlDofa += '</tr></table>';
+
+      // Lectura estratégica
+      if (dofa.lectura_estrategica) {
+        const le = dofa.lectura_estrategica;
+        htmlDofa += '<div style="margin-top:1rem; padding:1rem; background:#f9fcff; border-radius:0.8rem; font-size:0.85rem;">';
+        htmlDofa += '<strong>Lectura estratégica:</strong><br>';
+        if (le.fortalezas) htmlDofa += `<em>Fortalezas:</em> ${le.fortalezas}<br>`;
+        if (le.oportunidades) htmlDofa += `<em>Oportunidades:</em> ${le.oportunidades}<br>`;
+        if (le.debilidades) htmlDofa += `<em>Debilidades:</em> ${le.debilidades}<br>`;
+        if (le.amenazas) htmlDofa += `<em>Amenazas:</em> ${le.amenazas}<br>`;
+        htmlDofa += '</div>';
+      }
+
       matricesPreview.innerHTML = htmlDofa;
 
       // MAPA DE ACTORES
-      const actores = data.matrices.mapa_actores || [];
+      const actores = (data.datos && data.datos.mapa_actores) || [];
       if (actores.length > 0) {
         let htmlActores = '<table style="width:100%; font-size:0.85rem; border-collapse:collapse;">';
-        htmlActores += '<tr style="background:#e3eef9;"><th style="padding:0.5rem;">Actor</th><th style="padding:0.5rem;">Rol</th><th style="padding:0.5rem;">Relación</th><th style="padding:0.5rem;">Ubicación</th></tr>';
+        htmlActores += '<tr style="background:#e3eef9;"><th style="padding:0.5rem;">Actor</th><th style="padding:0.5rem;">Rol</th><th style="padding:0.5rem;">Intereses</th><th style="padding:0.5rem;">Aporte</th></tr>';
         actores.forEach(a => {
           htmlActores += '<tr>';
           htmlActores += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.nombre || '—'}</td>`;
           htmlActores += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.rol || '—'}</td>`;
-          htmlActores += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.relacion || '—'}</td>`;
-          htmlActores += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.ubicacion || '—'}</td>`;
+          htmlActores += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.intereses || '—'}</td>`;
+          htmlActores += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.aporte || '—'}</td>`;
           htmlActores += '</tr>';
         });
         htmlActores += '</table>';
@@ -675,6 +705,32 @@
       } else {
         actoresPreview.innerHTML = '<p style="color:#5a7a96; font-style:italic;">No se identificaron actores explícitos.</p>';
       }
+
+      // ESTRATEGIAS EMERGENTES Y MACROESTRATEGIAS
+      let htmlEstr = '';
+      const ee = data.datos.estrategias_emergentes || {};
+      const cruces = ['FO', 'DO', 'FA', 'DA'];
+      const crucesNombres = { FO: 'FO · Fortalezas + Oportunidades', DO: 'DO · Debilidades + Oportunidades', FA: 'FA · Fortalezas + Amenazas', DA: 'DA · Debilidades + Amenazas' };
+      cruces.forEach(c => {
+        if (ee[c] && ee[c].length > 0) {
+          htmlEstr += `<h4 style="color:#1d5e8f; margin-top:0.8rem;">${crucesNombres[c]}</h4><ul>`;
+          ee[c].forEach(e => {
+            htmlEstr += `<li><strong>${e.nombre || '—'}:</strong> ${e.descripcion || ''}</li>`;
+          });
+          htmlEstr += '</ul>';
+        }
+      });
+
+      const macro = data.datos.macroestrategias || [];
+      if (macro.length > 0) {
+        htmlEstr += '<h4 style="color:#1d5e8f; margin-top:1rem;">Macroestrategias</h4><ul>';
+        macro.forEach(m => {
+          htmlEstr += `<li><strong>${m.nombre || '—'}:</strong> ${(m.componentes || []).join(', ')}</li>`;
+        });
+        htmlEstr += '</ul>';
+      }
+
+      estrategiasPreview.innerHTML = htmlEstr || '<p style="color:#5a7a96; font-style:italic;">No se generaron estrategias.</p>';
 
       resultadoAnalisis.style.display = 'block';
 
@@ -717,22 +773,22 @@
       if (prio.resumen_narrativo) {
         htmlPrio += `<p style="margin-bottom:0.8rem;"><strong>Resumen:</strong> ${prio.resumen_narrativo}</p>`;
       }
-      if (prio.acciones && prio.acciones.length > 0) {
+      if (prio.actividades && prio.actividades.length > 0) {
         htmlPrio += '<table style="width:100%; font-size:0.85rem; border-collapse:collapse;">';
-        htmlPrio += '<tr style="background:#e3eef9;"><th style="padding:0.5rem;">Acción</th><th style="padding:0.5rem;">Estrategia</th><th style="padding:0.5rem;">Clasificación</th><th style="padding:0.5rem;">Microacciones</th><th style="padding:0.5rem;">Resultado</th></tr>';
-        prio.acciones.forEach(a => {
-          const badge = a.clasificacion === 'prioritario' ? 'badge-green' : 'badge-orange';
+        htmlPrio += '<tr style="background:#e3eef9;"><th style="padding:0.5rem;">Actividad</th><th style="padding:0.5rem;">Clasificación</th><th style="padding:0.5rem;">Justificación</th><th style="padding:0.5rem;">Acciones</th><th style="padding:0.5rem;">Producto</th></tr>';
+        prio.actividades.forEach(a => {
+          const badge = a.clasificacion === 'prioritaria' ? 'badge-green' : (a.clasificacion === 'importante' ? 'badge-orange' : 'badge-red');
           htmlPrio += '<tr>';
-          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.accion || '—'}</td>`;
-          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.estrategia_origen || '—'}</td>`;
+          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.actividad || '—'}</td>`;
           htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;"><span class="badge ${badge}">${a.clasificacion || '—'}</span></td>`;
-          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${(a.microacciones || []).join('<br>') || '—'}</td>`;
-          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.resultado_esperado || '—'}</td>`;
+          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.justificacion_misional || '—'}</td>`;
+          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${(a.acciones || []).join('<br>') || '—'}</td>`;
+          htmlPrio += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.producto_esperado || '—'}</td>`;
           htmlPrio += '</tr>';
         });
         htmlPrio += '</table>';
       }
-      matrizPriorizacion.innerHTML = htmlPrio || '<p style="color:#5a7a96; font-style:italic;">No se generaron acciones.</p>';
+      priorizacionPreview.innerHTML = htmlPrio || '<p style="color:#5a7a96; font-style:italic;">No se generaron actividades.</p>';
 
       // PERFILAMIENTO
       const perf = data.matriz_perfilamiento || {};
@@ -742,22 +798,19 @@
       }
       if (perf.acciones_priorizadas && perf.acciones_priorizadas.length > 0) {
         htmlPerf += '<table style="width:100%; font-size:0.85rem; border-collapse:collapse;">';
-        htmlPerf += '<tr style="background:#e3eef9;"><th style="padding:0.5rem;">Situación</th><th style="padding:0.5rem;">Acción</th><th style="padding:0.5rem;">Nivel</th><th style="padding:0.5rem;">Resultado</th><th style="padding:0.5rem;">Responsable</th><th style="padding:0.5rem;">Producto</th><th style="padding:0.5rem;">Indicadores</th></tr>';
+        htmlPerf += '<tr style="background:#e3eef9;"><th style="padding:0.5rem;">Qué</th><th style="padding:0.5rem;">Cómo</th><th style="padding:0.5rem;">Cuándo</th><th style="padding:0.5rem;">Quién</th><th style="padding:0.5rem;">Dónde</th></tr>';
         perf.acciones_priorizadas.forEach(a => {
-          const nivelColor = a.nivel_prioridad === 'alto' ? 'badge-red' : a.nivel_prioridad === 'medio' ? 'badge-orange' : 'badge-green';
           htmlPerf += '<tr>';
-          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.situacion || '—'}</td>`;
-          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.accion_priorizada || '—'}</td>`;
-          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;"><span class="badge ${nivelColor}">${a.nivel_prioridad || '—'}</span></td>`;
-          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.resultado_esperado || '—'}</td>`;
-          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.responsable || '—'}</td>`;
-          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.producto_esperado || '—'}</td>`;
-          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${(a.indicadores || []).join('<br>') || '—'}</td>`;
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.que || '—'}</td>`;
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.como || '—'}</td>`;
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.cuando || '—'}</td>`;
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.quien || '—'}</td>`;
+          htmlPerf += `<td style="padding:0.5rem; border:1px solid #d9e4ed;">${a.donde || '—'}</td>`;
           htmlPerf += '</tr>';
         });
         htmlPerf += '</table>';
       }
-      matrizPerfilamiento.innerHTML = htmlPerf || '<p style="color:#5a7a96; font-style:italic;">No se generaron acciones.</p>';
+      perfilamientoPreview.innerHTML = htmlPerf || '<p style="color:#5a7a96; font-style:italic;">No se generaron acciones.</p>';
 
       matricesAvanzadasDiv.style.display = 'block';
 
@@ -798,19 +851,28 @@
       y += 3;
     }
 
+    function verificarEspacio(necesario = 30) {
+      if (y > pageHeight - necesario) {
+        doc.addPage();
+        y = margin;
+      }
+    }
+
     agregarTexto('SISTEMATIZACIÓN DE INSTRUMENTOS PARTICIPATIVOS', 16, true);
     agregarTexto('Investigación Acción Participación (IAP)', 12);
     y += 5;
     agregarTexto(`Instrumento: ${analisisActual.instrumento}`, 11);
     agregarTexto(`Fecha: ${new Date().toLocaleDateString('es-CO')}`, 11);
-    agregarTexto(`Confianza: ${Math.round((analisisActual.confianza || 0) * 100)}%`, 11);
+    agregarTexto(`Confianza del análisis: ${Math.round((analisisActual.confianza || 0) * 100)}%`, 11);
     y += 10;
 
     agregarTexto('RESUMEN NARRATIVO', 14, true);
     agregarTexto(analisisActual.datos.resumen_narrativo || 'No disponible.', 10);
     y += 5;
 
-    const dofa = analisisActual.matrices.dofa || {};
+    // DOFA
+    verificarEspacio(60);
+    const dofa = (analisisActual.datos && analisisActual.datos.dofa) || {};
     agregarTexto('MATRIZ DOFA', 14, true);
     agregarTexto('Debilidades:', 11, true);
     agregarTexto((dofa.debilidades || []).join('\n') || '—', 10);
@@ -822,33 +884,77 @@
     agregarTexto((dofa.amenazas || []).join('\n') || '—', 10);
     y += 5;
 
-    const actores = analisisActual.matrices.mapa_actores || [];
+    // Lectura estratégica
+    if (dofa.lectura_estrategica) {
+      verificarEspacio(40);
+      agregarTexto('LECTURA ESTRATÉGICA', 12, true);
+      const le = dofa.lectura_estrategica;
+      if (le.fortalezas) agregarTexto(`Fortalezas: ${le.fortalezas}`, 10);
+      if (le.oportunidades) agregarTexto(`Oportunidades: ${le.oportunidades}`, 10);
+      if (le.debilidades) agregarTexto(`Debilidades: ${le.debilidades}`, 10);
+      if (le.amenazas) agregarTexto(`Amenazas: ${le.amenazas}`, 10);
+      y += 5;
+    }
+
+    // Mapa de actores
+    const actores = (analisisActual.datos && analisisActual.datos.mapa_actores) || [];
     if (actores.length > 0) {
+      verificarEspacio(40);
       agregarTexto('MAPA DE ACTORES', 14, true);
       actores.forEach(a => {
         agregarTexto(`• ${a.nombre || '—'} (${a.rol || '—'})`, 11, true);
-        agregarTexto(`  Relación: ${a.relacion || '—'}`, 10);
-        if (a.ubicacion && a.ubicacion !== 'no aplica') {
-          agregarTexto(`  Ubicación: ${a.ubicacion}`, 10);
+        if (a.intereses) agregarTexto(`  Intereses: ${a.intereses}`, 10);
+        if (a.aporte) agregarTexto(`  Aporte: ${a.aporte}`, 10);
+        y += 2;
+      });
+      y += 5;
+    }
+
+    // Estrategias emergentes
+    const ee = (analisisActual.datos && analisisActual.datos.estrategias_emergentes) || {};
+    const cruces = ['FO', 'DO', 'FA', 'DA'];
+    let hayEstrategias = cruces.some(c => ee[c] && ee[c].length > 0);
+    if (hayEstrategias) {
+      verificarEspacio(40);
+      agregarTexto('ESTRATEGIAS EMERGENTES', 14, true);
+      cruces.forEach(c => {
+        if (ee[c] && ee[c].length > 0) {
+          agregarTexto(`Cruce ${c}`, 11, true);
+          ee[c].forEach(e => {
+            agregarTexto(`• ${e.nombre || '—'}: ${e.descripcion || ''}`, 10);
+          });
+          y += 2;
         }
       });
     }
 
+    // Macroestrategias
+    const macro = (analisisActual.datos && analisisActual.datos.macroestrategias) || [];
+    if (macro.length > 0) {
+      verificarEspacio(40);
+      agregarTexto('MACROESTRATEGIAS', 14, true);
+      macro.forEach(m => {
+        agregarTexto(`• ${m.nombre || '—'}: ${(m.componentes || []).join(', ')}`, 10);
+      });
+      y += 5;
+    }
+
+    // Matrices avanzadas
     if (matricesAvanzadasActual) {
       doc.addPage();
       y = margin;
 
       const prio = matricesAvanzadasActual.matriz_priorizacion || {};
       agregarTexto('MATRIZ DE PRIORIZACIÓN', 14, true);
-      agregarTexto(prio.resumen_narrativo || '', 10);
+      if (prio.resumen_narrativo) agregarTexto(prio.resumen_narrativo, 10);
       y += 3;
-      (prio.acciones || []).forEach((a, i) => {
-        agregarTexto(`${i + 1}. ${a.accion || '—'}`, 11, true);
-        agregarTexto(`   Estrategia: ${a.estrategia_origen || '—'}`, 10);
+      (prio.actividades || []).forEach((a, i) => {
+        verificarEspacio(40);
+        agregarTexto(`${i + 1}. ${a.actividad || '—'}`, 11, true);
         agregarTexto(`   Clasificación: ${a.clasificacion || '—'}`, 10);
         agregarTexto(`   Justificación: ${a.justificacion_misional || '—'}`, 10);
-        agregarTexto(`   Microacciones: ${(a.microacciones || []).join('; ') || '—'}`, 10);
-        agregarTexto(`   Resultado esperado: ${a.resultado_esperado || '—'}`, 10);
+        agregarTexto(`   Acciones: ${(a.acciones || []).join('; ') || '—'}`, 10);
+        if (a.producto_esperado) agregarTexto(`   Producto esperado: ${a.producto_esperado}`, 10);
         y += 2;
       });
 
@@ -856,16 +962,15 @@
       y = margin;
       const perf = matricesAvanzadasActual.matriz_perfilamiento || {};
       agregarTexto('MATRIZ DE PERFILAMIENTO', 14, true);
-      agregarTexto(perf.resumen_narrativo || '', 10);
+      if (perf.resumen_narrativo) agregarTexto(perf.resumen_narrativo, 10);
       y += 3;
       (perf.acciones_priorizadas || []).forEach((a, i) => {
-        agregarTexto(`${i + 1}. ${a.accion_priorizada || '—'}`, 11, true);
-        agregarTexto(`   Situación: ${a.situacion || '—'}`, 10);
-        agregarTexto(`   Nivel de prioridad: ${a.nivel_prioridad || '—'}`, 10);
-        agregarTexto(`   Resultado esperado: ${a.resultado_esperado || '—'}`, 10);
-        agregarTexto(`   Responsable: ${a.responsable || '—'}`, 10);
-        agregarTexto(`   Producto esperado: ${a.producto_esperado || '—'}`, 10);
-        agregarTexto(`   Indicadores: ${(a.indicadores || []).join('; ') || '—'}`, 10);
+        verificarEspacio(40);
+        agregarTexto(`${i + 1}. ${a.que || '—'}`, 11, true);
+        agregarTexto(`   Cómo: ${a.como || '—'}`, 10);
+        agregarTexto(`   Cuándo: ${a.cuando || '—'}`, 10);
+        agregarTexto(`   Quién: ${a.quien || '—'}`, 10);
+        agregarTexto(`   Dónde: ${a.donde || '—'}`, 10);
         y += 2;
       });
     }
